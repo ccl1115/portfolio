@@ -292,8 +292,8 @@
   @tailwind utilities;
 
   @media print {
-    #header {
-      display: none;  
+    #header div {
+      position: static; 
     }
   }
 
