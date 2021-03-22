@@ -1,10 +1,10 @@
 <script lang="ts">
-  let title: string = "simon's portfolio";
+  let title: string = "simon's portfolio 禹璐的简历";
 </script>
 
 <main class="m-0 p-0">
   <div id="header" class="bg-black text-white overflow-hidden">
-    <div class="grid grid-cols-6 gap-0 h-30 fixed w-full z-10 pb-10 bg-black">
+    <div class="grid grid-cols-6 gap-0 h-30 fixed w-full z-10 pb-5 bg-black">
       <div class="col-span-1 flex flex-row items-end justify-end">
         <img
           alt="menu"
@@ -21,7 +21,7 @@
 
   <div>
     <div class="mt-40">
-      <div class="text-7xl text-center underline">hi there, i'm simon yu</div>
+      <!-- <div class="text-7xl text-center underline">hi there, i'm simon yu</div> -->
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-20 mx-20 my-20 pt-10">
       <div class="flex flex-col items-center">
@@ -135,9 +135,9 @@
         <p>使用MotionLayout开发布局动画</p>
         <p>使用Kotlin进行开发</p>
         <p>使用Flutter开发Android应用</p>
-        <p>熟悉Dagger, Koin等依赖注入设计模式</p>
+        <p>熟悉Dagger(Hilt), Koin等依赖注入设计模式</p>
         <p>高级的UI开发，自定义控件, Canvas绘制</p>
-        <p>内存优化，内存泄漏优化</p>
+        <p>内存优化，内存泄漏查找</p>
         <p>Android系统源码二次开发</p>
       </div>
 
@@ -153,6 +153,7 @@
         <p>在NodeJS平台上开发简单的API服务，中间件，WebSocket应用服务</p>
         <p>Express, Koa, Hapi等常用Web服务框架</p>
       </div>
+
       <div class="text-right text-xl">VueJS</div>
       <div class="col-span-2 text-sm pt-1">
         <p>使用Vue开发网页应用，管理后台</p>
@@ -161,40 +162,94 @@
         <p>vue-router, vuex, vue-axios等常用框架</p>
         <p>Webpack, Gulp, Eslint, Babel等工具链</p>
         <p>NPM, Yarn包管理工具</p>
-        <p>使用Electron开发桌面应用</p>
+      </div>
+      <div class="text-right text-xl">其他前端</div>
+      <div class="col-span-2 text-sm pt-1">
+        <p>微信小程序开发</p>
+        <p>UniApp开发</p>
+        <p>Electron开发桌面应用</p>
       </div>
     </div>
   </div>
 
-  <div id="projects" class="bg-blue-700 text-indigo-100 py-20">
+  <div id="projects" class="bg-blue-100 text-indigo-700 py-20">
     <div class="grid grid-cols-3 gap-x-20 gap-y-10 mx-20 my-40">
-      <div class="text-right text-xl">人人网</div>
+      <div class="text-right">
+        <p class="text-sm">北京千橡科技有限公司</p>
+        <p class="text-xl">人人网</p>
+        <p class="text-sm opacity-50">2011.09 - 2013.04</p>
+      </div>
       <div class="col-span-2 text-sm">
         <p>开发人人网Android客户端</p>
         <p>重构客户端UI架构</p>
       </div>
 
-      <div class="text-right text-xl">百度贴吧</div>
+      <div class="text-right">
+        <p class="text-sm">北京百度科技有限公司</p>
+        <p class="text-xl">百度贴吧</p>
+        <p class="text-sm opacity-50">2013.05 - 2014.05</p>
+      </div>
       <div class="col-span-2">
-        <p>开发百度贴吧SDK</p>
+        <p>百度贴吧SDK, 提供给第三方使用</p>
         <p>贴吧垂直版本</p>
-        <p>Multi-dex, 插件系统, UI层级优化等技术问题</p>
+        <p>class multi-dex, 插件系统, UI层级优化等技术问题</p>
       </div>
 
-      <div class="text-right text-xl">蓝莓</div>
+      <div class="text-right text-xl">
+        <p class="text-sm">北京优趣科技有限公司</p>
+        <p class="text-xl">蓝莓</p>
+        <p class="text-sm opacity-50">2014.05 - 2015.09</p>
+      </div>
       <div class="col-span-2">
+        <p>技术合伙人</p>
         <p>独立完成整个App开发</p>
+        <p>聊天，Feed，群组等社交功能</p>
       </div>
 
-      <div class="text-right text-xl">时光相册</div>
-      <div class="col-span-2"></div>
-      
-      <div class="text-right text-xl">语玩</div>
-      <div class="col-span-2"></div>
-
-      <div class="text-right text-xl">掌上车秘</div>
+      <div class="text-right">
+        <p class="text-sm">北京字节跳动科技有限公司</p>
+        <p class="text-xl">时光相册</p>
+        <p class="text-sm opacity-50">2015.10 - 2017.04</p>
+      </div>
       <div class="col-span-2">
-        
+        <p>智能相册管理工具</p>
+        <p>深度学习对照片进行识别和分类</p>
+      </div>
+      
+      <div class="text-right text-xl">
+        <p class="text-sm">贵阳语玩科技有限公司</p>
+        <p class="text-xl">语玩</p>
+        <p class="text-sm opacity-50">2017.07 - 2018.12</p>
+      </div>
+      <div class="col-span-2">
+        <p>狼人杀游戏客户端开发</p>
+        <p>聊天室开发</p>
+        <p>后台管理页面开发</p>
+        <p>运营活动页面开发</p>
+        <p>微信小程序 音频推流</p>
+      </div>
+
+      <div class="text-right text-xl">
+        <p class="text-sm">贵州乐诚科技有限公司</p>
+        <p class="text-xl">乐诚监狱智能终端机</p>
+        <p class="text-sm opacity-50">2019.05 - 2019.10</p>
+      </div>
+      <div class="col-span-2">
+        <p>银行支付接口(PHP)</p>
+        <p>终端Android客户端开发</p>
+        <p>人脸识别门禁系统</p>
+      </div>
+
+      <div class="text-right text-xl">
+        <p class="text-sm">贵州车秘科技有限公司</p>
+        <p class="text-xl">掌上车秘Android版</p>
+        <p class="text-xl">岗亭系统Android版</p>
+        <p class="text-sm opacity-50">2020.01 - 至今</p>
+      </div>
+      <div class="col-span-2">
+        <p>基于蓝牙的室内车位导航系统</p>
+        <p>MQTT岗亭消息推送</p>
+        <p>掌上车秘App 1.0维护</p>
       </div>
 
     </div>
@@ -207,11 +262,11 @@
       <div class="text-xl text-right">Visual Studio Code</div>
       <div class="mt-1">常用的代码编辑工具</div>
       <div class="text-xl text-right">Git</div>
-      <div class="mt-1">Git Flow模式, Branch, rebase, cherry-pick等高级Git使用, 搭建Git仓库</div>
+      <div class="mt-1">Git Flow模式, branch, rebase, cherry-pick等高级Git使用, 搭建Git仓库</div>
       <div class="text-xl text-right">JetBrains IDE</div>
-      <div class="mt-1">JetBrains系列IDE, 包括WebStore, Pycharm, IntelliJ等</div>
+      <div class="mt-1">JetBrains系列IDE, 包括WebStore, PyCharm, IntelliJ等</div>
       <div class="text-xl text-right">Docker</div>
-      <div class="mt-1">使用Docker快速搭建和维护各种基础服务, mysql, redis, gitlab等, 搭建开发和测试环境</div>
+      <div class="mt-1">使用Docker快速搭建和维护各种基础服务, mysql, redis, gitlab, jenkins等, 搭建开发和测试环境</div>
       <div class="text-xl text-right">Figma</div>
       <div class="mt-1">简单的应用UI原型制作</div>
       <div class="text-xl text-right">Adobe Photoshop/Illustrator</div>
