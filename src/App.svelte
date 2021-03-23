@@ -63,7 +63,9 @@
     offsetTop += d;
     offsetTop = Math.max(0, Math.min(offsetTop, header.clientHeight));
     gsap.set(header, { y: -offsetTop });
-    scale = (200 - Math.abs(d)) / 200;
+    if (d > 10 || d < 10) {
+      scale = (200 - Math.abs(d)) / 200;
+    }
     preTop = top;
   }
 
