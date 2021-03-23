@@ -8,7 +8,11 @@
   let tools: HTMLElement;
 
   let main: HTMLElement;
+  let header: HTMLElement;
   let html: HTMLElement;
+
+  let preTop = 0;
+  let offsetTop = 0;
 
   let iconSrc = "./assets/menu.png";
 
@@ -32,20 +36,26 @@
   }
 
   function toTop() {
-    gsap.to(html, {scrollTop: 0});
+    gsap.to(html, { scrollTop: 0 });
   }
 
   function onScroll(event) {
     const top = event.target.documentElement.scrollTop;
+    const d = top - preTop;
+    offsetTop += d;
+    offsetTop = Math.max(0, Math.min(offsetTop, header.clientHeight));
+    gsap.set(header, { y: -offsetTop });
+    preTop = top;
     if (top > 100) {
-      iconSrc = "./assets/close.png";
+      iconSrc = "./assets/home.png";
     } else {
-      iconSrc = "./assets/menu.png";
+      iconSrc = "";
     }
   }
 
   onMount(() => {
     html = document.documentElement;
+    gsap.config({ force3D: true });
     document.addEventListener("scroll", onScroll);
     return () => {
       document.removeEventListener("scroll", onScroll);
@@ -54,17 +64,19 @@
 </script>
 
 <main class="m-0 p-0 h-full" bind:this={main}>
-  <div id="header" class="bg-black text-gray-100 overflow-hidden">
+  <div
+    bind:this={header}
+    id="header"
+    class="bg-black text-gray-100 fixed top-0 w-full"
+  >
     <div
-      class="grid grid-cols-6 gap-0 h-30 fixed w-full z-10 pt-5 pb-5 bg-black"
+      class="grid grid-cols-6 gap-0 h-30 pt-5 pb-5 bg-black"
     >
       <div class="col-span-1 flex flex-row items-end justify-end">
         <img
-          alt="menu"
-          v-if="$route.path === '/'"
           class="w-6 h-6 hover:bg-gray-600"
           src={iconSrc}
-          on:click="{toTop}"
+          on:click={toTop}
         />
       </div>
       <div class="col-span-5 flex flex-col items-start mx-10">
@@ -83,11 +95,15 @@
     >
       <div class="flex flex-col items-center">
         <p class="text-lg">Name</p>
-        <p class="text-sm">禹璐</p>
+        <p class="text-sm">禹璐 Simon</p>
         <p class="text-lg pt-4">Location</p>
         <p class="text-sm">中国贵阳</p>
         <p class="text-lg pt-4">Email</p>
         <p class="text-sm">ccl1115 at gmail dot com</p>
+        <p class="text-lg pt-4">Github</p>
+        <p class="text-sm underline">
+          <a href="https://github.com/ccl1115">https://github.com/ccl1115</a>
+        </p>
       </div>
       <div class="flex flex-col items-center">
         <p class="text-lg pb-4">全栈开发者</p>
@@ -145,7 +161,7 @@
         </ul>
       </div>
       <div class="flex flex-col items-center">
-        <button class="mb-4 p-1" on:click={toTools}>
+        <button class="text-lg mb-4 p-1" on:click={toTools}>
           工具使用
           <span class="text-xs border rounded-sm border-black px-1 ml-1"
             >查看</span
@@ -171,27 +187,31 @@
     id="languages"
     class="bg-black text-gray-100 py-20"
   >
-    <div class="grid grid-cols-3 gap-x-20 gap-y-10 mx-20 mt-5 mb-40">
+    <div class="block">
       <div class="col-span-3 text-center text-2xl mb-15">使用的语言</div>
       <div class="col-span-3 lg:col-span-1 text-right text-xl">Java</div>
       <div class="col-span-3 lg:col-span-2 text-sm mt-1">
         精通Java语言，主要用于Android平台上的App开发。
       </div>
-      <div class="col-span-3 lg:col-span-1 text-right text-xl">Kotlin</div>
+      <div class="col-span-3 lg:col-span-1 text-right text-xl mt-10">
+        Kotlin
+      </div>
       <div class="col-span-3 lg:col-span-2 text-sm mt-1">
         熟练使用Kotlin语言，使用其开发过完整的App。了解Coroutine和Flow等异步机制。
       </div>
-      <div class="col-span-3 lg:col-span-1 text-right text-xl">
+      <div class="col-span-3 lg:col-span-1 text-right text-xl mt-10">
         JavaScript/TypeScript
       </div>
       <div class="col-span-3 lg:col-span-2 text-sm mt-1">
         熟练使用JavaScript和TypeScript进行前端和后端开发。
       </div>
-      <div class="col-span-3 lg:col-span-1 text-right text-xl">Dart</div>
+      <div class="col-span-3 lg:col-span-1 text-right text-xl mt-10">Dart</div>
       <div class="col-span-3 lg:col-span-2 text-sm mt-1">
         使用Dart开发Flutter应用，了解其语言特性。
       </div>
-      <div class="col-span-3 lg:col-span-1 text-right text-xl">Python</div>
+      <div class="col-span-3 lg:col-span-1 text-right text-xl mt-10">
+        Python
+      </div>
       <div class="col-span-3 lg:col-span-2 text-sm mt-1">
         使用Python开发脚本任务，自动化工作等。也了解Python上的Web开发。
       </div>
@@ -203,7 +223,7 @@
     id="platforms"
     class="bg-white text-gray-800 py-20"
   >
-    <div class="grid grid-cols-3 gap-x-20 gap-y-10 mx-20 mt-20 mb-40">
+    <div class="block">
       <div class="col-span-3 text-center text-2xl">开发平台</div>
       <div class="col-span-3 lg:col-span-1 text-right text-xl">Android</div>
       <div class="col-span-3 lg:col-span-2 text-sm pt-1">
@@ -220,32 +240,38 @@
         <p>Android系统源码二次开发</p>
       </div>
 
-      <div class="col-span-3 lg:col-span-1 text-right text-xl">Flutter</div>
+      <div class="col-span-3 lg:col-span-1 text-right text-xl mt-10">
+        Flutter
+      </div>
       <div class="col-span-3 lg:col-span-2 text-sm pt-1">
         <p>熟悉声明式开发模式</p>
         <p>熟悉Dart语言</p>
         <p>BloC, MobX等无状态化开发模式</p>
       </div>
 
-      <div class="col-span-3 lg:col-span-1 text-right text-xl">NodeJS as Back End</div>
+      <div class="col-span-3 lg:col-span-1 text-right text-xl mt-10">
+        NodeJS as Back End
+      </div>
       <div class="col-span-3 lg:col-span-2 text-sm pt-1">
         <p>在NodeJS平台上开发简单的API服务，中间件，WebSocket应用服务</p>
         <p>Express, Koa, Hapi等常用Web服务框架</p>
         <p>熟悉非阻塞异步IO编程思想</p>
       </div>
 
-      <div class="col-span-3 lg:col-span-1 text-right text-xl">
+      <div class="col-span-3 lg:col-span-1 text-right text-xl mt-10">
         Front End Stack
       </div>
       <div class="col-span-3 lg:col-span-2 text-sm pt-1">
         <p>使用Vue/React/Svelte开发网页应用，管理后台等</p>
         <p>前后端分离</p>
         <p>了解SSR, NuxtJS等服务端渲染</p>
-        <p>Webpack, Gulp, Eslint, Babel等工具链</p>
-        <p>NPM, Yarn包管理工具</p>
+        <p>Webpack, Gulp, Eslint, Babel, Yarn等工具链</p>
         <p>SASS, LESS等样式扩展</p>
+        <p>Tailwind/Bootstrap等CSS框架</p>
       </div>
-      <div class="col-span-3 lg:col-span-1 text-right text-xl">其他前端</div>
+      <div class="col-span-3 lg:col-span-1 text-right text-xl mt-10">
+        其他前端
+      </div>
       <div class="col-span-3 lg:col-span-2 text-sm pt-1">
         <p>微信小程序开发</p>
         <p>UniApp开发</p>
@@ -255,7 +281,7 @@
   </div>
 
   <div bind:this={projects} id="projects" class="bg-black text-gray-100 py-20">
-    <div class="grid grid-cols-3 gap-x-20 gap-y-10 mx-20 mt-5 mb-40">
+    <div class="block">
       <div class="col-span-3 text-center text-2xl mb-15">公司和项目</div>
       <div class="col-span-3 lg:col-span-1 text-right">
         <p class="text-sm">北京千橡科技有限公司</p>
@@ -267,7 +293,7 @@
         <p>重构客户端UI架构</p>
       </div>
 
-      <div class="col-span-3 lg:col-span-1 text-right">
+      <div class="col-span-3 lg:col-span-1 text-right mt-10">
         <p class="text-sm">北京百度科技有限公司</p>
         <p class="text-xl">百度贴吧</p>
         <p class="text-sm opacity-50">2013.05 - 2014.05</p>
@@ -278,7 +304,7 @@
         <p>class multi-dex, 插件系统, UI层级优化等技术问题</p>
       </div>
 
-      <div class="col-span-3 lg:col-span-1 text-right text-xl">
+      <div class="col-span-3 lg:col-span-1 text-right text-xl mt-10">
         <p class="text-sm">北京优趣科技有限公司</p>
         <p class="text-xl">蓝莓</p>
         <p class="text-sm opacity-50">2014.05 - 2015.09</p>
@@ -289,16 +315,19 @@
         <p>聊天，Feed，群组等社交功能</p>
       </div>
 
-      <div class="col-span-3 lg:col-span-1 text-right">
+      <div class="col-span-3 lg:col-span-1 text-right mt-10">
         <p class="text-sm">北京字节跳动科技有限公司</p>
         <p class="text-xl">时光相册</p>
         <p class="text-sm opacity-50">2015.10 - 2017.04</p>
       </div>
       <div class="col-span-3 lg:col-span-2 text-sm">
         <p>智能相册管理工具</p>
+        <p>照片云端同步</p>
+        <p>照片编辑</p>
+        <p>图库管理</p>
       </div>
 
-      <div class="col-span-3 lg:col-span-1 text-right text-xl">
+      <div class="col-span-3 lg:col-span-1 text-right text-xl mt-10">
         <p class="text-sm">贵阳语玩科技有限公司</p>
         <p class="text-xl">语玩</p>
         <p class="text-sm opacity-50">2017.07 - 2018.12</p>
@@ -311,7 +340,7 @@
         <p>微信小程序 音频推流</p>
       </div>
 
-      <div class="col-span-3 lg:col-span-1 text-right text-xl">
+      <div class="col-span-3 lg:col-span-1 text-right text-xl mt-10">
         <p class="text-sm">贵州乐诚科技有限公司</p>
         <p class="text-xl">乐诚监狱智能终端机</p>
         <p class="text-sm opacity-50">2019.05 - 2019.10</p>
@@ -322,7 +351,7 @@
         <p>人脸识别门禁系统</p>
       </div>
 
-      <div class="col-span-3 lg:col-span-1 text-right text-xl">
+      <div class="col-span-3 lg:col-span-1 text-right text-xl mt-10">
         <p class="text-sm">贵州车秘科技有限公司</p>
         <p class="text-xl">掌上车秘Android版</p>
         <p class="text-xl">岗亭系统Android版</p>
@@ -337,7 +366,7 @@
   </div>
 
   <div bind:this={tools} id="tools" class="bg-white text-gray-800 py-20">
-    <div class="grid grid-cols-2 lg:grid-cols-4 mx-10 gap-10 pt-10 mt-5 mb-40">
+    <div class="block2">
       <div class="col-span-2 lg:col-span-4 text-center text-2xl mb-15">
         使用的工具
       </div>
@@ -393,5 +422,13 @@
     #header div {
       position: static;
     }
+  }
+
+  .block {
+    @apply grid grid-cols-3 gap-x-5 lg:gap-x-20 gap-y-10 mx-10 lg:mx-20 mt-5 mb-40;
+  }
+
+  .block2 {
+    @apply grid grid-cols-2 lg:grid-cols-4 gap-x-5 lg:gap-x-20 gap-y-10 mx-10 lg:mx-20 mt-5 mb-40;
   }
 </style>
