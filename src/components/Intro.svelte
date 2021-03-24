@@ -24,7 +24,7 @@
     <div class="flex flex-col items-center">
       <p class="text-lg pb-4">全栈开发者</p>
       <p class="lg:mx-20 text-sm">
-        近十年开发经验，主要在Android平台上进行开发。也有前端开发经验，熟悉Vue，Quasar，Electron等框架。同时使用NodeJS进行服务端的开发。
+        近十年开发经验，一线互联网公司经验。在Android平台上进行App开发。也有前端开发经验，熟悉Vue/React/Svelte，Electron等框架。同时使用NodeJS进行服务端的开发。
       </p>
     </div>
     <div class="flex flex-col items-center">
@@ -70,7 +70,7 @@
       <ul class="lg:mx-20 text-sm">
         <li>北京千橡科技/人人网</li>
         <li>北京百度科技/贴吧</li>
-        <li>北京字节跳动</li>
+        <li>北京字节跳动/时光相册</li>
         <li>北京优趣科技/蓝莓</li>
         <li>贵阳语玩科技/语玩</li>
         <li>贵州乐诚科技</li>

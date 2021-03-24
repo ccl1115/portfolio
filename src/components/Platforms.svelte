@@ -4,7 +4,6 @@
   <div class="col-span-3 lg:col-span-2 text-sm pt-1">
     <p>多年在Android平台上开发App的经验</p>
     <p>使用JetPack进行高效的开发(ViewModel, LiveData, NavigationUI, Room)</p>
-    <p>使用MotionLayout开发布局动画</p>
     <p>使用Kotlin进行开发</p>
     <p>使用Flutter开发Android应用</p>
     <p>熟悉Dagger(Hilt), Koin等依赖注入设计模式</p>
@@ -29,6 +28,7 @@
     <p>在NodeJS平台上开发简单的API服务，中间件，WebSocket应用服务</p>
     <p>Express, Koa, Hapi等常用Web服务框架</p>
     <p>熟悉非阻塞异步IO编程思想</p>
+    <p>Strapi等Headless CMS系统开发</p>
   </div>
 
   <div class="col-span-3 lg:col-span-1 text-right text-xl sm:mt-10 lg:mt-0">
@@ -41,6 +41,8 @@
     <p>SASS, LESS等样式扩展</p>
     <p>Tailwind/Bootstrap等CSS框架</p>
     <p>Nx, Lerna等多项目管理工具</p>
+    <p>了解最新的ECMAScript规范</p>
+    <p>了解PWA, Responsive, WebAssembly, WebGL等现代Web技术</p>
   </div>
   <div class="col-span-3 lg:col-span-1 text-right text-xl sm:mt-10 lg:mt-0">
     其他前端
