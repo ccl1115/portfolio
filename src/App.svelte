@@ -1,11 +1,11 @@
 <script lang="ts">
-  import gsap from 'gsap';
-  import { onMount } from 'svelte';
-  import Intro from './components/Intro.svelte';
-import Languages from './components/Languages.svelte';
-  import Platforms from './components/Platforms.svelte';
-  import Projects from './components/Projects.svelte';
-  import Tools from './components/Tools.svelte';
+  import gsap from "gsap";
+  import { onMount } from "svelte";
+  import Intro from "./components/Intro.svelte";
+  import Languages from "./components/Languages.svelte";
+  import Platforms from "./components/Platforms.svelte";
+  import Projects from "./components/Projects.svelte";
+  import Tools from "./components/Tools.svelte";
 
   let languages: HTMLElement;
   let platforms: HTMLElement;
@@ -19,10 +19,10 @@ import Languages from './components/Languages.svelte';
   let preTop = 0;
   let offsetTop = 0;
 
-  let iconSrc = './assets/home.png';
+  let iconSrc = "./assets/home.png";
 
   let title: string = "simon's portfolio";
-  let subtitle: string = '禹璐的简历';
+  let subtitle: string = "禹璐的简历";
 
   function toLanguages() {
     gsap.to(html, { scrollTop: languages.offsetTop });
@@ -49,16 +49,32 @@ import Languages from './components/Languages.svelte';
     const d = top - preTop;
     offsetTop += d;
     offsetTop = Math.max(0, Math.min(offsetTop, header.clientHeight));
-    gsap.set(header, { y: -offsetTop });
+    gsap.set(header, { y: -offsetTop, scale: 1 - (offsetTop / 500) });
     preTop = top;
+    scrollFadeIn(top, languages);
+    scrollFadeIn(top, projects);
+    scrollFadeIn(top, tools);
+    scrollFadeIn(top, platforms);
+  }
+
+  function scrollFadeIn(top: number, el: HTMLElement) {
+    if (top + html.clientHeight / 2 + 100 > el.offsetTop) {
+      gsap.set(el, {
+        opacity: (top + html.clientHeight / 2 - el.offsetTop) / 300,
+      });
+    }
   }
 
   onMount(() => {
     html = document.documentElement;
     gsap.config({ force3D: true });
-    document.addEventListener('scroll', onScroll);
+    document.addEventListener("scroll", onScroll);
+    gsap.set(languages, { opacity: 0 });
+    gsap.set(projects, { opacity: 0 });
+    gsap.set(platforms, { opacity: 0 });
+    gsap.set(tools, { opacity: 0 });
     return () => {
-      document.removeEventListener('scroll', onScroll);
+      document.removeEventListener("scroll", onScroll);
     };
   });
 </script>

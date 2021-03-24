@@ -1,3 +1,5 @@
+<script lang="ts">
+</script>
 <div class="block">
   <div class="col-span-3 text-center text-2xl mb-15">使用的语言</div>
   <div class="col-span-3 lg:col-span-1 text-right text-xl">Java</div>

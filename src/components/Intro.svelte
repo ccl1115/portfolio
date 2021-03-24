@@ -1,8 +1,8 @@
 <script lang="ts">
-  export let toLanguages: MouseEventHandler<HTMLButtonElement>
-  export let toPlatforms: MouseEventHandler<HTMLButtonElement>
-  export let toProjects: MouseEventHandler<HTMLButtonElement>
-  export let toTools: MouseEventHandler<HTMLButtonElement>
+  export let toLanguages: any
+  export let toPlatforms: any
+  export let toProjects: any
+  export let toTools: any
 </script>
 
 <div>
@@ -58,8 +58,9 @@
         <li>Android</li>
         <li>Flutter</li>
         <li>NodeJS</li>
-        <li>Vue</li>
+        <li>Vue/React/Svelte</li>
         <li>Electron</li>
+        <li>Django</li>
       </ul>
     </div>
     <div class="flex flex-col items-center">
@@ -70,13 +71,13 @@
         >
       </button>
       <ul class="lg:mx-20 text-sm">
-        <li>千橡/人人网</li>
-        <li>百度/贴吧</li>
-        <li>字节跳动</li>
-        <li>优趣/蓝莓</li>
-        <li>语玩/语玩</li>
-        <li>乐诚</li>
-        <li>车秘</li>
+        <li>北京千橡科技/人人网</li>
+        <li>北京百度科技/贴吧</li>
+        <li>北京字节跳动</li>
+        <li>北京优趣科技/蓝莓</li>
+        <li>贵阳语玩科技/语玩</li>
+        <li>贵州乐诚科技</li>
+        <li>贵州车秘科技</li>
       </ul>
     </div>
     <div class="flex flex-col items-center">
@@ -94,6 +95,7 @@
           <a
             class="underline hover:bg-gray-400 p-1"
             href="https://thumb.bbsimonyu.com"
+            target="blank"
           >
             Thumb Launcher Home Page
           </a>
@@ -102,6 +104,7 @@
           <a
             class="underline hover:bg-gray-400 p-1"
             href="https://play.google.com/store/apps/details?id=com.simonsliar.dumblauncher"
+            target="blank"
           >
             Thumb Launcher @ Google Play
           </a>
