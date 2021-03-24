@@ -85,7 +85,7 @@
   <div
     bind:this={header}
     id="header"
-    class="bg-gray-600 text-gray-100 fixed top-0 w-full z-10"
+    class="bg-gray-600 text-gray-100 fixed top-0 w-full z-10 shadow-lg"
   >
     <div class="grid grid-cols-6 gap-0 h-30 pt-5 pb-5">
       <div class="col-span-1 flex flex-row items-end justify-end">
@@ -133,15 +133,17 @@
     <div bind:this={tools} id="tools" class="bg-white text-gray-800 py-20">
       <Tools />
     </div>
-    <div class="my-20 text-gray-500 text-center">
+    <div class="py-20 mb-20 text-gray-200 bg-gray-800 text-center shadow-lg">
       <p>© 2021 all rights reversed by Simon Yu</p>
       <p class="text-xs">
         This portfolio is written using <a
-          class="text-blue-700"
+          class="text-blue-300"
           href="https://www.typescriptlang.org">TypeScript</a
         >
-        and <a class="text-blue-700" href="https://svelte.dev">Svelte</a>
+        and <a class="text-blue-300" href="https://svelte.dev">Svelte</a>
       </p>
+      <p class="text-xs"><a class="text-blue-300" href="https://greensock.com/gsap">GSAP</a> for animation</p>
+      <p class="text-xs"><a class="text-blue-300" href="https://tailwindcss.com">TailwindCSS</a> for styling</p>
     </div>
   </div>
 </main>
