@@ -17,7 +17,6 @@
   let html: HTMLElement;
 
   let preTop = 0;
-  let offsetTop = 0;
 
   let iconSrc = "./assets/home.png";
 
@@ -50,7 +49,7 @@
     if (d > 0) {
       gsap.to(header, { y: -header.clientHeight, scale: 0.5 });
     } else if (d < 0) {
-      gsap.to(header, { y: 0, scale: 1, duration: 0.5, ease: "easeOut" });
+      gsap.to(header, { y: 0, scale: 1, duration: 0.5 });
     }
     preTop = top;
     scrollFadeIn(top, languages);
@@ -61,8 +60,10 @@
 
   function scrollFadeIn(top: number, el: HTMLElement) {
     if (top + html.clientHeight / 2 + 100 > el.offsetTop) {
+      const a = (top + html.clientHeight / 2 -el.offsetTop) / 300;
       gsap.set(el, {
-        opacity: (top + html.clientHeight / 2 - el.offsetTop) / 300,
+        opacity: a,
+        y: Math.max(0, (1 - a) * 400)
       });
     }
   }
@@ -81,7 +82,7 @@
   });
 </script>
 
-<main class="m-0 p-0 h-full">
+<main class="h-full relative" id="main">
   <div
     bind:this={header}
     id="header"
@@ -103,47 +104,40 @@
     </div>
   </div>
 
-  <div bind:this={main}>
+  <div bind:this={main} class="pt-20">
     <Intro {toLanguages} {toPlatforms} {toProjects} {toTools} />
 
-    <div
-      bind:this={languages}
-      id="languages"
-      class="bg-gray-800 text-gray-100 py-20"
-    >
+    <div bind:this={languages} id="languages" class="text-gray-100 py-20">
       <Languages />
     </div>
 
-    <div
-      bind:this={platforms}
-      id="platforms"
-      class="bg-white text-gray-800 py-20"
-    >
+    <div bind:this={platforms} id="platforms" class="text-gray-100 py-20">
       <Platforms />
     </div>
 
-    <div
-      bind:this={projects}
-      id="projects"
-      class="bg-gray-800 text-gray-100 py-20"
-    >
+    <div bind:this={projects} id="projects" class="text-gray-100 py-20">
       <Projects />
     </div>
 
-    <div bind:this={tools} id="tools" class="bg-white text-gray-800 py-20">
+    <div bind:this={tools} id="tools" class="text-gray-100 py-20">
       <Tools />
     </div>
-    <div class="py-20 mb-20 text-gray-200 bg-gray-800 text-center shadow-lg">
+    <div id="footer" class="py-10 mx-5 rounded-t-sm mb-20 bg-white text-gray-800 text-center shadow-lg">
       <p>© 2021 all rights reversed by Simon Yu</p>
       <p class="text-xs">
         This portfolio is written using <a
-          class="text-blue-300"
+          class="text-blue-700"
           href="https://www.typescriptlang.org">TypeScript</a
         >
-        and <a class="text-blue-300" href="https://svelte.dev">Svelte</a>
+        and <a class="text-blue-700" href="https://svelte.dev">Svelte</a>
       </p>
-      <p class="text-xs"><a class="text-blue-300" href="https://greensock.com/gsap">GSAP</a> for animation</p>
-      <p class="text-xs"><a class="text-blue-300" href="https://tailwindcss.com">TailwindCSS</a> for styling</p>
+      <p class="text-xs">
+        <a class="text-blue-700" href="https://greensock.com/gsap">GSAP</a> for animation
+      </p>
+      <p class="text-xs">
+        <a class="text-blue-700" href="https://tailwindcss.com">TailwindCSS</a> for
+        styling
+      </p>
     </div>
   </div>
 </main>
@@ -158,9 +152,28 @@
   @tailwind utilities;
 
   @media print {
-    #header div {
+    #header {
       position: static;
     }
+    #footer {
+      display: none;
+    }
+  }
+
+  #main {
+    background: #0099f7; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #f11712,
+      #0099f7
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #f11712,
+      #0099f7
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  #footer {
   }
 
   .block {

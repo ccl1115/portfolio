@@ -6,11 +6,8 @@
 </script>
 
 <div>
-  <div class="mt-40">
-    <!-- <div class="text-7xl text-center underline">hi there, i'm simon yu</div> -->
-  </div>
   <div
-    class="text-gray-800 grid grid-cols-1 md:grid-cols-3 gap-20 mx-5 lg:mx-20 my-20 pt-10"
+    class="text-gray-100 grid grid-cols-1 md:grid-cols-3 gap-20 mx-5 lg:mx-20 my-20 pt-10"
   >
     <div class="flex flex-col items-center">
       <p class="text-lg">Name</p>
@@ -49,7 +46,7 @@
     <div class="flex flex-col items-center">
       <button class="text-lg mb-4 p-1" on:click={toPlatforms}>
         开发平台
-        <span class="text-xs border rounded-sm border-black px-1 ml-1"
+        <span class="text-xs border rounded-sm border-white px-1 ml-1"
           >查看</span
         >
       </button>
@@ -66,7 +63,7 @@
     <div class="flex flex-col items-center">
       <button class="text-lg mb-4 p-1" on:click={toProjects}>
         公司/项目
-        <span class="text-xs border rounded-sm border-black px-1 ml-1"
+        <span class="text-xs border rounded-sm border-white px-1 ml-1"
           >查看</span
         >
       </button>
@@ -83,7 +80,7 @@
     <div class="flex flex-col items-center">
       <button class="text-lg mb-4 p-1" on:click={toTools}>
         工具使用
-        <span class="text-xs border rounded-sm border-black px-1 ml-1"
+        <span class="text-xs border rounded-sm border-white px-1 ml-1"
           >查看</span
         >
       </button>
