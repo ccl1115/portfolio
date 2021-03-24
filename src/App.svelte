@@ -172,6 +172,10 @@
 
   @tailwind utilities;
 
+  * {
+    outline-style: none;
+  }
+
   @media print {
     #header {
       position: static;
