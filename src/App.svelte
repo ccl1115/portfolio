@@ -47,9 +47,11 @@
   function onScroll(event: any) {
     const top = event.target.documentElement.scrollTop;
     const d = top - preTop;
-    offsetTop += d;
-    offsetTop = Math.max(0, Math.min(offsetTop, header.clientHeight));
-    gsap.set(header, { y: -offsetTop, scale: 1 - (offsetTop / 500) });
+    if (d > 0) {
+      gsap.to(header, { y: -header.clientHeight, scale: 0.5 });
+    } else if (d < 0) {
+      gsap.to(header, { y: 0, scale: 1, duration: 0.5, ease: "easeOut" });
+    }
     preTop = top;
     scrollFadeIn(top, languages);
     scrollFadeIn(top, projects);
