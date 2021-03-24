@@ -30,7 +30,7 @@
     <div class="flex flex-col items-center">
       <button class="text-lg mb-4 p-1" on:click={toLanguages}>
         使用的语言
-        <span class="text-xs border rounded-sm border-black px-1 ml-1"
+        <span class="text-xs border rounded-sm border-white px-1 ml-1"
           >查看</span
         >
       </button>

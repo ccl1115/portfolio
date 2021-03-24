@@ -11,6 +11,7 @@
   let platforms: HTMLElement;
   let projects: HTMLElement;
   let tools: HTMLElement;
+  let topButton: HTMLElement;
 
   let main: HTMLElement;
   let header: HTMLElement;
@@ -18,7 +19,7 @@
 
   let preTop = 0;
 
-  let iconSrc = "./assets/home.png";
+  let iconSrc = "./assets/menu.png";
 
   let title: string = "simon's portfolio";
   let subtitle: string = "禹璐的简历";
@@ -48,8 +49,12 @@
     const d = top - preTop;
     if (d > 0) {
       gsap.to(header, { y: -header.clientHeight, scale: 0.5 });
+      gsap.to(topButton, { scale: 1 });
     } else if (d < 0) {
       gsap.to(header, { y: 0, scale: 1, duration: 0.5 });
+    }
+    if (top < 100) {
+      gsap.to(topButton, { scale: 0 });
     }
     preTop = top;
     scrollFadeIn(top, languages);
@@ -60,10 +65,10 @@
 
   function scrollFadeIn(top: number, el: HTMLElement) {
     if (top + html.clientHeight / 2 + 100 > el.offsetTop) {
-      const a = (top + html.clientHeight / 2 -el.offsetTop) / 300;
+      const a = (top + html.clientHeight / 2 - el.offsetTop) / 300;
       gsap.set(el, {
         opacity: a,
-        y: Math.max(0, (1 - a) * 400)
+        y: Math.max(0, (1 - a) * 400),
       });
     }
   }
@@ -76,33 +81,36 @@
     gsap.set(projects, { opacity: 0 });
     gsap.set(platforms, { opacity: 0 });
     gsap.set(tools, { opacity: 0 });
+    gsap.to(topButton, { scale: 0 });
     return () => {
       document.removeEventListener("scroll", onScroll);
     };
   });
 </script>
 
-<main class="h-full relative" id="main">
+<main class="h-full relative superman">
   <div
     bind:this={header}
     id="header"
-    class="bg-gray-600 text-gray-100 fixed top-0 w-full z-10 shadow-lg"
+    class="purple80 text-gray-100 fixed top-0 w-full z-10 shadow-lg"
   >
     <div class="grid grid-cols-6 gap-0 h-30 pt-5 pb-5">
-      <div class="col-span-1 flex flex-row items-end justify-end">
-        <img
-          class="w-6 h-6 hover:bg-gray-600"
-          alt="top"
-          src={iconSrc}
-          on:click={toTop}
-        />
-      </div>
+      <div class="col-span-1 flex flex-row items-end justify-end" />
       <div class="col-span-5 flex flex-col items-start mx-10">
         <p class="text-lg text-gray-100">{title}</p>
         <p class="text-sm text-gray-300">{subtitle}</p>
       </div>
     </div>
   </div>
+
+  <button
+    bind:this={topButton}
+    on:click={toTop}
+    id="top-button"
+    class="fixed z-20 top-7 left-8 rounded-full shadow-lg border-white border-2 w-10 h-10 p-2 purple80"
+  >
+    <img src={iconSrc} alt="top" class="w-6 h-6" />
+  </button>
 
   <div bind:this={main} class="pt-20">
     <Intro {toLanguages} {toPlatforms} {toProjects} {toTools} />
@@ -122,7 +130,10 @@
     <div bind:this={tools} id="tools" class="text-gray-100 py-20">
       <Tools />
     </div>
-    <div id="footer" class="py-10 mx-5 rounded-t-sm mb-20 bg-white text-gray-800 text-center shadow-lg">
+    <div
+      id="footer"
+      class="py-10 mx-5 rounded-t-sm mb-20 bg-white text-gray-800 text-center shadow-lg"
+    >
       <p>© 2021 all rights reversed by Simon Yu</p>
       <p class="text-xs">
         This portfolio is written using <a
@@ -158,9 +169,26 @@
     #footer {
       display: none;
     }
+    #top-button {
+      display: none;
+    }
   }
 
-  #main {
+  .purple80 {
+    background: #41295a; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #2f0743,
+      #41295a
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #2f0743,
+      #41295a
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+
+  .superman {
     background: #0099f7; /* fallback for old browsers */
     background: -webkit-linear-gradient(
       to right,
@@ -172,8 +200,6 @@
       #f11712,
       #0099f7
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  }
-  #footer {
   }
 
   .block {
