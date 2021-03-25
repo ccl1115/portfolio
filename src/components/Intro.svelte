@@ -108,5 +108,10 @@
         </li>
       </ul>
     </div>
+    <div class="text-center">
+      <p class="text-lg my-4">教育</p>
+      <p class="text-sm">2017-2011</p>
+      <p class="text-sm">就读于大连理工大学 软件工程学院 本科</p>
+    </div>
   </div>
 </div>

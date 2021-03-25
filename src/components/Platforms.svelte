@@ -26,9 +26,10 @@
   </div>
   <div class="col-span-3 lg:col-span-2 text-sm pt-1">
     <p>在NodeJS平台上开发简单的API服务，中间件，WebSocket应用服务</p>
-    <p>Express, Koa, Hapi等常用Web服务框架</p>
+    <p>Express, Koa, Hapi等常用轻量级服务框架</p>
     <p>熟悉非阻塞异步IO编程思想</p>
-    <p>Strapi等Headless CMS系统开发</p>
+    <p>Strapi等Headless CMS框架</p>
+    <p>LoopBack网络服务开发框架</p>
   </div>
 
   <div class="col-span-3 lg:col-span-1 text-right text-xl sm:mt-10 lg:mt-0">

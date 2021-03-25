@@ -201,22 +201,22 @@
   .superman {
     background: #0099f7; /* fallback for old browsers */
     background: -webkit-linear-gradient(
-      to right,
+      to left,
       #f11712,
       #0099f7
     ); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(
-      to right,
+      to left,
       #f11712,
       #0099f7
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
 
   .block {
-    @apply grid grid-cols-3 gap-x-5 lg:gap-x-20 gap-y-10 mx-10 lg:mx-20 mt-5 mb-40;
+    @apply grid grid-cols-3 gap-x-5 lg:gap-x-20 gap-y-5 mx-10 lg:mx-20 mt-2 mb-10;
   }
 
   .block2 {
-    @apply grid grid-cols-2 lg:grid-cols-4 gap-x-5 lg:gap-x-20 gap-y-10 mx-10 lg:mx-20 mt-5 mb-40;
+    @apply grid grid-cols-2 lg:grid-cols-4 gap-x-5 lg:gap-x-20 gap-y-5 mx-10 lg:mx-20 mt-2 mb-10;
   }
 </style>
