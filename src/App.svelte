@@ -64,7 +64,7 @@
   }
 
   function scrollFadeIn(top: number, el: HTMLElement) {
-    if (top + html.clientHeight / 2 + 100 > el.offsetTop) {
+    if (top + html.clientHeight / 2 + 500 > el.offsetTop) {
       const a = (top + html.clientHeight / 2 - el.offsetTop) / 300;
       gsap.set(el, {
         opacity: a,
@@ -77,11 +77,7 @@
     html = document.documentElement;
     gsap.config({ force3D: true });
     document.addEventListener("scroll", onScroll);
-    gsap.set(languages, { opacity: 0 });
-    gsap.set(projects, { opacity: 0 });
-    gsap.set(platforms, { opacity: 0 });
-    gsap.set(tools, { opacity: 0 });
-    gsap.to(topButton, { scale: 0 });
+    gsap.set(topButton, { scale: 0 });
     return () => {
       document.removeEventListener("scroll", onScroll);
     };
