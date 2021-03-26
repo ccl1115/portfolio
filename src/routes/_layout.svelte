@@ -70,11 +70,11 @@
   </button>
 
   <div bind:this={main} class="pt-20">
-		<slot></slot>
+    <slot />
+  </div>
 </main>
 
 <style global lang="postcss">
-
   * {
     outline-style: none;
   }
