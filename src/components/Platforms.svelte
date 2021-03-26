@@ -1,6 +1,14 @@
+<script>
+  import Icon from './Icon.svelte'
+</script>
 <div class="block">
   <div class="col-span-3 text-center text-2xl">开发平台</div>
-  <div class="col-span-3 lg:col-span-1 text-right text-xl">Android</div>
+  <div class="col-span-3 lg:col-span-1">
+    <div class="flex flex-row items-center justify-center float-right">
+      <Icon icon="./assets/ic_android.jpg"/>
+      <p class="m-2">Android</p>
+    </div>
+  </div>
   <div class="col-span-3 lg:col-span-2 text-sm pt-1">
     <p>多年在Android平台上开发App的经验</p>
     <p>使用JetPack进行高效的开发(ViewModel, LiveData, NavigationUI, Room)</p>
@@ -12,8 +20,11 @@
     <p>Android系统源码二次开发</p>
   </div>
 
-  <div class="col-span-3 lg:col-span-1 text-right text-xl sm:mt-10 lg:mt-0">
-    Flutter
+  <div class="col-span-3 lg:col-span-1 sm:mt-10 lg:mt-0">
+    <div class="flex flex-row items-center justify-center float-right">
+      <Icon icon="./assets/ic_flutter.png"/>
+      <p class="m-2">Flutter</p>
+    </div>
   </div>
   <div class="col-span-3 lg:col-span-2 text-sm pt-1">
     <p>熟悉声明式开发模式</p>
@@ -21,8 +32,11 @@
     <p>BloC, MobX等无状态化开发模式</p>
   </div>
 
-  <div class="col-span-3 lg:col-span-1 text-right text-xl sm:mt-10 lg:mt-0">
-    NodeJS as Back End
+  <div class="col-span-3 lg:col-span-1 sm:mt-10 lg:mt-0">
+    <div class="flex flex-row items-center justify-center float-right">
+      <Icon icon="./assets/ic_nodejs.png"/>
+      <p class="m-2">NodeJS as Back End</p>
+    </div>
   </div>
   <div class="col-span-3 lg:col-span-2 text-sm pt-1">
     <p>在NodeJS平台上开发简单的API服务，中间件，WebSocket应用服务</p>
@@ -32,8 +46,12 @@
     <p>LoopBack网络服务开发框架</p>
   </div>
 
-  <div class="col-span-3 lg:col-span-1 text-right text-xl sm:mt-10 lg:mt-0">
-    Front End Stack
+  <div class="col-span-3 lg:col-span-1 sm:mt-10 lg:mt-0">
+    <div class="flex flex-row flex-wrap items-center justify-center float-right">
+      <Icon icon="./assets/ic_react.png"/>
+      <Icon icon="./assets/ic_vuejs.png"/>
+      <p class="m-2">Front End Stack</p>
+    </div>
   </div>
   <div class="col-span-3 lg:col-span-2 text-sm pt-1">
     <p>使用Vue/React/Svelte开发网页应用，管理后台等</p>
@@ -45,7 +63,7 @@
     <p>了解最新的ECMAScript规范</p>
     <p>了解PWA, Responsive, WebAssembly, WebGL等现代Web技术</p>
   </div>
-  <div class="col-span-3 lg:col-span-1 text-right text-xl sm:mt-10 lg:mt-0">
+  <div class="col-span-3 lg:col-span-1 text-right sm:mt-10 lg:mt-0">
     其他前端
   </div>
   <div class="col-span-3 lg:col-span-2 text-sm pt-1">
