@@ -62,6 +62,7 @@
     <p>Nx, Lerna等多项目管理工具</p>
     <p>了解最新的ECMAScript规范</p>
     <p>了解PWA, Responsive, WebAssembly, WebGL等现代Web技术</p>
+    <p>使用Lighthouse优化网页</p>
   </div>
   <div class="col-span-3 lg:col-span-1 text-right sm:mt-10 lg:mt-0">
     其他前端

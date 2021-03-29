@@ -76,6 +76,11 @@ Grouping content
 2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
 */
 
+hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+}
+
 /*
 Text-level semantics
 ====================
@@ -85,9 +90,18 @@ Text-level semantics
 Add the correct text decoration in Chrome, Edge, and Safari.
 */
 
+abbr[title] {
+  text-decoration: underline dotted;
+}
+
 /**
 Add the correct font weight in Edge and Safari.
 */
+
+b,
+strong {
+  font-weight: bolder;
+}
 
 /**
 1. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
@@ -95,6 +109,8 @@ Add the correct font weight in Edge and Safari.
 */
 
 code,
+kbd,
+samp,
 pre {
   font-family:
 		ui-monospace,
@@ -110,9 +126,29 @@ pre {
 Add the correct font size in all browsers.
 */
 
+small {
+  font-size: 80%;
+}
+
 /**
 Prevent 'sub' and 'sup' elements from affecting the line height in all browsers.
 */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
 
 /*
 Tabular data
@@ -124,6 +160,11 @@ Tabular data
 2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
 */
 
+table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+}
+
 /*
 Forms
 =====
@@ -134,7 +175,11 @@ Forms
 2. Remove the margin in Firefox and Safari.
 */
 
-button {
+button,
+input,
+optgroup,
+select,
+textarea {
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
   line-height: 1.15; /* 1 */
@@ -146,7 +191,8 @@ Remove the inheritance of text transform in Edge and Firefox.
 1. Remove the inheritance of text transform in Firefox.
 */
 
-button { /* 1 */
+button,
+select { /* 1 */
   text-transform: none;
 }
 
@@ -175,9 +221,17 @@ See: https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d4
 Remove the padding so developers are not caught out when they zero out 'fieldset' elements in all browsers.
 */
 
+legend {
+  padding: 0;
+}
+
 /**
 Add the correct vertical alignment in Chrome and Firefox.
 */
+
+progress {
+  vertical-align: baseline;
+}
 
 /**
 Correct the cursor style of increment and decrement buttons in Safari.
@@ -206,6 +260,10 @@ Interactive
 Add the correct display in Chrome and Safari.
 */
 
+summary {
+  display: list-item;
+}
+
 /**
  * Manually forked from SUIT CSS Base: https://github.com/suitcss/base
  * A thin layer on top of normalize.css that provides a starting point more
@@ -216,8 +274,17 @@ Add the correct display in Chrome and Safari.
  * Removes the default spacing and border for appropriate elements.
  */
 
-
+blockquote,
+dl,
+dd,
 h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
 p,
 pre {
   margin: 0;
@@ -238,7 +305,12 @@ button:focus {
   outline: 5px auto -webkit-focus-ring-color;
 }
 
+fieldset {
+  margin: 0;
+  padding: 0;
+}
 
+ol,
 ul {
   list-style: none;
   margin: 0;
@@ -310,6 +382,10 @@ body {
  * Ensure horizontal rules are visible by default
  */
 
+hr {
+  border-top-width: 1px;
+}
+
 /**
  * Undo the `border-style: none` reset that Normalize applies to images so that
  * our `border-{width}` utilities have the expected effect.
@@ -324,11 +400,30 @@ img {
   border-style: solid;
 }
 
+textarea {
+  resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+  color: #9fa6b2;
+}
+
 button {
   cursor: pointer;
 }
 
-h1 {
+table {
+  border-collapse: collapse;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-size: inherit;
   font-weight: inherit;
 }
@@ -351,7 +446,11 @@ a {
  * normalize.css.
  */
 
-button {
+button,
+input,
+optgroup,
+select,
+textarea {
   padding: 0;
   line-height: inherit;
   color: inherit;
@@ -365,7 +464,9 @@ button {
  */
 
 pre,
-code {
+code,
+kbd,
+samp {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -377,7 +478,14 @@ code {
  * https://github.com/mozdevs/cssremedy/issues/14
  */
 
-img {
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
   display: block;
   vertical-align: middle;
 }
@@ -389,12 +497,18 @@ img {
  * https://github.com/mozdevs/cssremedy/issues/14
  */
 
-img {
+img,
+video {
   max-width: 100%;
   height: auto;
 }
 
 .bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+}
+
+.hover\:bg-white:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
 }
@@ -440,6 +554,10 @@ img {
 
 .flex {
   display: flex;
+}
+
+.table {
+  display: table;
 }
 
 .grid {
@@ -556,6 +674,10 @@ img {
   margin-top: 0.25rem;
 }
 
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
 .ml-1 {
   margin-left: 0.25rem;
 }
@@ -591,6 +713,11 @@ img {
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
+}
+
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .py-10 {
@@ -643,12 +770,12 @@ img {
   top: 0;
 }
 
-.top-7 {
-  top: 1.75rem;
+.left-4 {
+  left: 1rem;
 }
 
-.left-8 {
-  left: 2rem;
+.top-7 {
+  top: 1.75rem;
 }
 
 * {
@@ -657,6 +784,11 @@ img {
 
 .shadow-lg {
   --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.hover\:shadow-md:hover {
+  --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -705,6 +837,11 @@ img {
 .text-blue-700 {
   --tw-text-opacity: 1;
   color: rgba(26, 86, 219, var(--tw-text-opacity));
+}
+
+.hover\:text-gray-800:hover {
+  --tw-text-opacity: 1;
+  color: rgba(37, 47, 63, var(--tw-text-opacity));
 }
 
 .underline {
@@ -775,8 +912,18 @@ img {
   grid-column: span 3 / span 3;
 }
 
-.col-span-5 {
-  grid-column: span 5 / span 5;
+.col-span-4 {
+  grid-column: span 4 / span 4;
+}
+
+.col-start-2 {
+  grid-column-start: 2;
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 @keyframes spin {
@@ -831,6 +978,14 @@ img {
 }
 
 @media (min-width: 1024px) {
+  .lg\:flex {
+    display: flex;
+  }
+
+  .lg\:flex-row {
+    flex-direction: row;
+  }
+
   .lg\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;

@@ -23,7 +23,7 @@
     const top = event.target.documentElement.scrollTop;
     const d = top - preTop;
     if (d > 0) {
-      gsap.to(header, { y: -header.clientHeight, scale: 0.5 });
+      gsap.to(header, { y: -header.clientHeight });
       gsap.to(topButton, { scale: 1 });
     } else if (d < 0) {
       gsap.to(header, { y: 0, scale: 1, duration: 0.5 });
@@ -49,14 +49,18 @@
   <div
     bind:this={header}
     id="header"
-    class="purple80 text-gray-100 fixed top-0 w-full z-10 shadow-lg"
+    class="purple80 text-gray-100 fixed top-0 w-full z-10 shadow-lg lg:flex lg:flex-row items-center"
   >
-    <div class="grid grid-cols-6 gap-0 h-30 pt-5 pb-5">
+    <div class="grid grid-cols-6 gap-0 h-30 pt-5 pb-5 lg:w-1/2">
       <div class="col-span-1 flex flex-row items-end justify-end" />
-      <div class="col-span-5 flex flex-col items-start mx-10">
+      <div class="col-start-2 col-span-4 flex flex-col items-start px-5">
         <p class="text-lg text-gray-100">{title}</p>
         <p class="text-sm text-gray-300">{subtitle}</p>
       </div>
+    </div>
+    <div class="flex flex-row justify-end mx-10 mb-1 gap-x-5 text-sm lg:w-1/2">
+      <a class="p-2 rounded-lg hover:text-gray-800 hover:bg-white hover:shadow-md transition-all" href="https://blog.bbsimonyu.com">BLOG</a>
+      <a class="p-2 rounded-lg hover:text-gray-800 hover:bg-white hover:shadow-md transition-all"href="https://github.com/ccl1115">@GITHUB</a>
     </div>
   </div>
 
@@ -64,7 +68,7 @@
     bind:this={topButton}
     on:click={toTop}
     id="top-button"
-    class="fixed z-20 top-7 left-8 rounded-full shadow-lg border-white border-2 w-10 h-10 p-2 purple80"
+    class="fixed z-20 top-7 left-4 rounded-full shadow-lg border-white border-2 w-10 h-10 p-2 purple80"
   >
     <img src={iconSrc} alt="top" class="w-6 h-6" />
   </button>
@@ -76,7 +80,7 @@
 
 <style global lang="postcss">
   * {
-    outline-style: none;
+    outline: none;
   }
 
   @media print {
