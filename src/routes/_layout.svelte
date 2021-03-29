@@ -1,6 +1,8 @@
 <script lang="ts">
   import gsap from "gsap";
-  import { onMount } from "svelte";
+  import { onMount, SvelteComponent } from "svelte";
+  import Header from "../components/Header.svelte";
+  import Footer from '../components/Footer.svelte';
 
   let topButton: HTMLElement;
 
@@ -47,23 +49,11 @@
 
 <main class="h-full relative superman">
   <div
-    bind:this={header}
-    id="header"
     class="purple80 text-gray-100 fixed top-0 w-full z-10 shadow-lg lg:flex lg:flex-row items-center"
+    bind:this={header}
   >
-    <div class="grid grid-cols-6 gap-0 h-30 pt-5 pb-5 lg:w-1/2">
-      <div class="col-span-1 flex flex-row items-end justify-end" />
-      <div class="col-start-2 col-span-4 flex flex-col items-start px-5">
-        <p class="text-lg text-gray-100">{title}</p>
-        <p class="text-sm text-gray-300">{subtitle}</p>
-      </div>
-    </div>
-    <div class="flex flex-row justify-end mx-10 mb-1 gap-x-5 text-sm lg:w-1/2">
-      <a class="p-2 rounded-lg hover:text-gray-800 hover:bg-white hover:shadow-md transition-all" href="https://blog.bbsimonyu.com">BLOG</a>
-      <a class="p-2 rounded-lg hover:text-gray-800 hover:bg-white hover:shadow-md transition-all"href="https://github.com/ccl1115">@GITHUB</a>
-    </div>
+    <Header {title} {subtitle} />
   </div>
-
   <button
     bind:this={topButton}
     on:click={toTop}
@@ -76,6 +66,12 @@
   <div bind:this={main} class="pt-20">
     <slot />
   </div>
+  <div
+    id="footer"
+    class="py-10 lg:mx-5 rounded-t-sm lg:mb-20 bg-white text-gray-800 text-center shadow-lg"
+  >
+    <Footer/>
+    </div>
 </main>
 
 <style global lang="postcss">

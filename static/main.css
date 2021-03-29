@@ -1009,8 +1009,16 @@ video {
     margin-bottom: 5rem;
   }
 
+  .lg\:pt-5 {
+    padding-top: 1.25rem;
+  }
+
   .lg\:pb-10 {
     padding-bottom: 2.5rem;
+  }
+
+  .lg\:w-1\/2 {
+    width: 50%;
   }
 
   .lg\:grid-cols-3 {
