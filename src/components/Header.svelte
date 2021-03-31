@@ -10,7 +10,7 @@
     <p class="text-sm text-gray-300">{subtitle}</p>
   </div>
 </div>
-<div class="flex flex-row justify-end mx-10 mb-1 gap-x-5 text-sm lg:w-1/2">
+<div id="links" class="flex flex-row justify-end mx-10 mb-1 gap-x-5 text-sm lg:w-1/2">
   <a
     class="p-2 rounded-lg hover:text-gray-800 hover:bg-white hover:shadow-md transition-all"
     href="https://blog.bbsimonyu.com">BLOG</a
@@ -20,3 +20,11 @@
     href="https://github.com/ccl1115">@GITHUB</a
   >
 </div>
+
+<style>
+  @media print {
+    #links {
+      display: none;
+    }
+  }
+</style>

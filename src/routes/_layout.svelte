@@ -49,6 +49,7 @@
 
 <main class="h-full relative superman">
   <div
+    id="header"
     class="purple80 text-gray-100 fixed top-0 w-full z-10 shadow-lg lg:flex lg:flex-row items-center"
     bind:this={header}
   >
