@@ -2,7 +2,7 @@
   import gsap from "gsap";
   import { onMount, SvelteComponent } from "svelte";
   import Header from "../components/Header.svelte";
-  import Footer from '../components/Footer.svelte';
+  import Footer from "../components/Footer.svelte";
 
   let topButton: HTMLElement;
 
@@ -71,8 +71,8 @@
     id="footer"
     class="py-10 lg:mx-5 rounded-t-sm lg:mb-20 bg-white text-gray-800 text-center shadow-lg"
   >
-    <Footer/>
-    </div>
+    <Footer />
+  </div>
 </main>
 
 <style global lang="postcss">
