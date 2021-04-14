@@ -7,6 +7,9 @@
   import Projects from "../components/Projects.svelte";
   import Tools from "../components/Tools.svelte";
 
+  import section from "../stores/section";
+
+  let intro: HTMLElement;
   let languages: HTMLElement;
   let platforms: HTMLElement;
   let projects: HTMLElement;
@@ -15,21 +18,24 @@
 
   let html: HTMLElement;
 
+  function toIntro() {
+    gsap.to(html, { scrollTop: intro.offsetTop - 100 });
+  }
 
   function toLanguages() {
-    gsap.to(html, { scrollTop: languages.offsetTop });
+    gsap.to(html, { scrollTop: languages.offsetTop - 100 });
   }
 
   function toPlatforms() {
-    gsap.to(html, { scrollTop: platforms.offsetTop });
+    gsap.to(html, { scrollTop: platforms.offsetTop - 100 });
   }
 
   function toProjects() {
-    gsap.to(html, { scrollTop: projects.offsetTop });
+    gsap.to(html, { scrollTop: projects.offsetTop - 100 });
   }
 
   function toTools() {
-    gsap.to(html, { scrollTop: tools.offsetTop });
+    gsap.to(html, { scrollTop: tools.offsetTop - 100 });
   }
 
   function toTop() {
@@ -59,13 +65,37 @@
     gsap.config({ force3D: true });
     document.addEventListener("scroll", onScroll);
     gsap.set(topButton, { scale: 0 });
+
+    const unsubscriber = section.subscribe((section) => {
+      switch (section) {
+        case "intro":
+          toIntro();
+          break;
+        case "projects":
+          toProjects();
+          break;
+        case "tools":
+          toTools();
+          break;
+        case "platforms":
+          toPlatforms();
+          break;
+        case "languages":
+          toLanguages();
+          break;
+      }
+    });
+
     return () => {
       document.removeEventListener("scroll", onScroll);
+      unsubscriber();
     };
   });
 </script>
 
-<Intro {toLanguages} {toPlatforms} {toProjects} {toTools} />
+<div bind:this={intro}>
+  <Intro />
+</div>
 
 <div bind:this={languages} id="languages" class="text-gray-100 py-20">
   <Languages />

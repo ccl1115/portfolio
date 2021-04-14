@@ -1,24 +1,165 @@
 <script lang="ts">
-  export let title: string;
-  export let subtitle: string;
+  import { tweened } from "svelte/motion";
+  import { circOut } from "svelte/easing";
+  import { fade } from "svelte/transition";
+  import { onMount } from "svelte";
+  import { zhCH } from "../data/data";
+  import gsap from "gsap";
+
+  import section from '../stores/section';
+
+  let index = 0;
+  let text = "Geek in the pick";
+
+  let fixed = false;
+
+  let bannerHeight: number;
+  let headerHeight: number;
+
+  let html: HTMLElement;
+
+  let translate = tweened(0, { easing: circOut });
+  function setIndex(i: number) {
+    index = i;
+    translate.set(-i * 15);
+    text = zhCH.banner.portraits[index].text;
+  }
+
+  function scroll() {
+    gsap.to(html, { scrollTop: bannerHeight + headerHeight + headerHeight });
+  }
+
+  function onScroll(event) {
+    const top = event.target.documentElement.scrollTop;
+    if (top > bannerHeight + headerHeight) {
+      fixed = true;
+    } else {
+      fixed = false;
+    }
+  }
+
+  onMount(() => {
+    html = document.documentElement;
+    document.addEventListener("scroll", onScroll);
+    const interval = setInterval(() => {
+      index += 1;
+      if (index > 3) {
+        index = 0;
+      }
+      setIndex(index);
+    }, 3000);
+
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener("scroll", onScroll);
+    };
+  });
 </script>
 
-<div class="grid grid-cols-6 gap-0 h-30 pt-5 pb-5 lg:w-1/2">
-  <div class="col-span-1 flex flex-row items-end justify-end" />
-  <div class="col-start-2 col-span-4 flex flex-col items-start px-5">
-    <p class="text-lg text-gray-100">{title}</p>
-    <p class="text-sm text-gray-300">{subtitle}</p>
+<div class="absolute top-0 w-full flex flex-col h-screen">
+  <div
+    class="purple80 text-gray-100 lg:flex lg:flex-row items-center h-2/12"
+    bind:clientHeight={headerHeight}
+  >
+    <div class="grid grid-cols-6 gap-0 h-24 pt-5 pb-5 lg:w-1/2">
+      <div class="col-span-1 flex flex-row items-end justify-end" />
+      <div class="col-start-2 col-span-4 flex flex-col items-start px-5">
+        <p class="text-lg text-gray-100">{zhCH.header.title}</p>
+        <p class="text-sm text-gray-300">{zhCH.header.subtitle}</p>
+      </div>
+    </div>
+    <div
+      id="links"
+      class="flex flex-row justify-end mx-10 mb-1 gap-x-5 text-sm lg:w-1/2"
+    >
+      {#each zhCH.header.links as item}
+        <a
+          class="p-2 rounded-lg hover:text-gray-800 hover:bg-white hover:shadow-md transition-all"
+          href={item.link}>{item.text}</a
+        >
+      {/each}
+    </div>
   </div>
-</div>
-<div id="links" class="flex flex-row justify-end mx-10 mb-1 gap-x-5 text-sm lg:w-1/2">
-  <a
-    class="p-2 rounded-lg hover:text-gray-800 hover:bg-white hover:shadow-md transition-all"
-    href="https://blog.bbsimonyu.com">BLOG</a
+
+  <div
+    class="purple80 flex flex-col items-center justify-center h-8/12"
+    bind:clientHeight={bannerHeight}
   >
-  <a
-    class="p-2 rounded-lg hover:text-gray-800 hover:bg-white hover:shadow-md transition-all"
-    href="https://github.com/ccl1115">@GITHUB</a
+    <p class="text-white p-4">{zhCH.banner.description}</p>
+    <div class="p-1 rounded-full bg-white">
+      <div class="flex flex-col items-center">
+        <div
+          class="w-60 h-60 flex flex-row rounded-full bg-white overflow-hidden"
+        >
+          <img
+            class="w-60 h-60"
+            alt="portrait"
+            style="transform: translateX({$translate}rem);"
+            src="./assets/portrait.png"
+          />
+          <img
+            class="w-60 h-60"
+            style="transform: translateX({$translate}rem);"
+            alt="portrait"
+            src="./assets/portrait-android.jpeg"
+          />
+          <img
+            class="w-60 h-60"
+            style="transform: translateX({$translate}rem);"
+            alt="portrait"
+            src="./assets/portrait-fe.jpeg"
+          />
+          <img
+            class="w-60 h-60"
+            style="transform: translateX({$translate}rem);"
+            alt="portrait"
+            src="./assets/portrait-wheel.jpeg"
+          />
+        </div>
+      </div>
+    </div>
+    <p class="m-10 text-white text-2xl">{text}</p>
+    <div class="flex flow-col">
+      <div
+        class="w-2 h-4 m-1 rounded-full bg-white transition-all"
+        class:w-4={index == 0}
+        on:click={() => setIndex(0)}
+      />
+      <div
+        class="w-2 h-4 m-1 rounded-full bg-white transition-all"
+        class:w-4={index == 1}
+        on:click={() => setIndex(1)}
+      />
+      <div
+        class="w-2 h-4 m-1 rounded-full bg-white transition-all"
+        class:w-4={index == 2}
+        on:click={() => setIndex(2)}
+      />
+      <div
+        class="w-2 h-4 m-1 rounded-full bg-white transition-all"
+        class:w-4={index == 3}
+        on:click={() => setIndex(3)}
+      />
+    </div>
+  </div>
+
+  <div
+    class="flex flex-col items-center justify-center bg-white w-full h-2/12 z-10"
+    class:fixed
+    class:top-0={fixed}
   >
+    <div transition:fade={{ delay: 200 }} class="flex flex-row gap-x-10">
+      <button on:click={scroll}>{zhCH.banner.more}</button>
+    </div>
+    {#if fixed}
+      <div transition:fade={{ delay: 200 }} class="flex flex-row gap-x-10 my-4">
+        <button on:click={() => section.set("languages")}>{zhCH.banner.menu.languages}</button>
+        <button on:click={() => section.set("platforms")}>{zhCH.banner.menu.platforms}</button>
+        <button on:click={() => section.set("projects")}>{zhCH.banner.menu.projects}</button>
+        <button on:click={() => section.set("tools")}>{zhCH.banner.menu.tools}</button>
+      </div>
+    {/if}
+  </div>
 </div>
 
 <style>

@@ -1,13 +1,12 @@
 <script lang="ts">
-  export let toLanguages: any
-  export let toPlatforms: any
-  export let toProjects: any
-  export let toTools: any
+  import section from '../stores/section';
+
 </script>
 
 <div>
   <div
-    class="text-gray-100 grid grid-cols-1 md:grid-cols-3 gap-20 mx-5 lg:mx-20 my-20 pt-10"
+    class="text-gray-100 grid grid-cols-1 md:grid-cols-3 gap-20 mx-5 lg:mx-20 my-20"
+    style="margin-top: 0"
   >
     <div class="flex flex-col items-center">
       <p class="text-lg">Name</p>
@@ -28,11 +27,9 @@
       </p>
     </div>
     <div class="flex flex-col items-center">
-      <button class="text-lg mb-4 p-1" on:click={toLanguages}>
+      <button class="text-lg mb-4 p-1" on:click={() => section.set("languages")}>
         使用的语言
-        <span class="text-xs border rounded-sm border-white px-1 ml-1"
-          >查看</span
-        >
+        <span class="text-xs border rounded-sm border-white px-1 ml-1">查看</span>
       </button>
       <ul class="mx-20 text-sm">
         <li>Java</li>
@@ -44,11 +41,9 @@
       </ul>
     </div>
     <div class="flex flex-col items-center">
-      <button class="text-lg mb-4 p-1" on:click={toPlatforms}>
+      <button class="text-lg mb-4 p-1" on:click={() => section.set("platforms")}>
         开发平台
-        <span class="text-xs border rounded-sm border-white px-1 ml-1"
-          >查看</span
-        >
+        <span class="text-xs border rounded-sm border-white px-1 ml-1">查看</span>
       </button>
 
       <ul class="mx-20 text-sm">
@@ -61,11 +56,9 @@
       </ul>
     </div>
     <div class="flex flex-col items-center">
-      <button class="text-lg mb-4 p-1" on:click={toProjects}>
+      <button class="text-lg mb-4 p-1" on:click={() => section.set("projects")}>
         公司/项目
-        <span class="text-xs border rounded-sm border-white px-1 ml-1"
-          >查看</span
-        >
+        <span class="text-xs border rounded-sm border-white px-1 ml-1">查看</span>
       </button>
       <ul class="lg:mx-20 text-sm">
         <li>北京千橡科技/人人网</li>
@@ -78,11 +71,9 @@
       </ul>
     </div>
     <div class="flex flex-col items-center">
-      <button class="text-lg mb-4 p-1" on:click={toTools}>
+      <button class="text-lg mb-4 p-1" on:click={() => section.set("tools")}>
         工具使用
-        <span class="text-xs border rounded-sm border-white px-1 ml-1"
-          >查看</span
-        >
+        <span class="text-xs border rounded-sm border-white px-1 ml-1">查看</span>
       </button>
     </div>
     <div class="text-center">

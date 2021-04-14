@@ -1,13 +1,13 @@
 <script lang="ts">
+  import "../../static/tailwind.css";
   import gsap from "gsap";
-  import { onMount, SvelteComponent } from "svelte";
+  import { onMount } from "svelte";
   import Header from "../components/Header.svelte";
   import Footer from "../components/Footer.svelte";
 
   let topButton: HTMLElement;
 
   let main: HTMLElement;
-  let header: HTMLElement;
   let html: HTMLElement;
 
   let preTop = 0;
@@ -15,7 +15,7 @@
   let iconSrc = "./assets/menu.png";
 
   let title: string = "simon's portfolio";
-  let subtitle: string = "禹璐的简历";
+  let subtitle: string = "";
 
   function toTop() {
     gsap.to(html, { scrollTop: 0 });
@@ -25,10 +25,8 @@
     const top = event.target.documentElement.scrollTop;
     const d = top - preTop;
     if (d > 0) {
-      gsap.to(header, { y: -header.clientHeight });
       gsap.to(topButton, { scale: 1 });
     } else if (d < 0) {
-      gsap.to(header, { y: 0, scale: 1, duration: 0.5 });
     }
     if (top < 100) {
       gsap.to(topButton, { scale: 0 });
@@ -48,12 +46,8 @@
 </script>
 
 <main class="h-full relative superman">
-  <div
-    id="header"
-    class="purple80 text-gray-100 fixed top-0 w-full z-10 shadow-lg lg:flex lg:flex-row items-center"
-    bind:this={header}
-  >
-    <Header {title} {subtitle} />
+  <div id="header" class="z-20 w-full">
+    <Header/>
   </div>
   <button
     bind:this={topButton}
@@ -64,7 +58,7 @@
     <img src={iconSrc} alt="top" class="w-6 h-6" />
   </button>
 
-  <div bind:this={main} class="pt-20">
+  <div bind:this={main} style="padding-top: 120vh">
     <slot />
   </div>
   <div
@@ -76,8 +70,11 @@
 </main>
 
 <style global lang="postcss">
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
   * {
-    outline: none;
+    outline: 0 !important;
   }
 
   @media print {
