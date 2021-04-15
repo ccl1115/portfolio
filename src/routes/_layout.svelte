@@ -53,7 +53,7 @@
     bind:this={topButton}
     on:click={toTop}
     id="top-button"
-    class="fixed z-20 top-7 left-4 rounded-full shadow-lg border-white border-2 w-10 h-10 p-2 purple80"
+    class="fixed z-20 top-3 left-4 rounded-full shadow-lg border-white border-2 w-10 h-10 p-2 purple80"
   >
     <img src={iconSrc} alt="top" class="w-6 h-6" />
   </button>

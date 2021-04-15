@@ -1,6 +1,7 @@
 <script lang="ts">
   import gsap from "gsap";
   import { onMount } from "svelte";
+import { get_spread_object } from "svelte/internal";
   import Intro from "../components/Intro.svelte";
   import Languages from "../components/Languages.svelte";
   import Platforms from "../components/Platforms.svelte";
@@ -68,6 +69,9 @@
 
     const unsubscriber = section.subscribe((section) => {
       switch (section) {
+        case "top":
+          toTop();
+          break;
         case "intro":
           toIntro();
           break;

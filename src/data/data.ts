@@ -47,7 +47,7 @@ export const zhCH: Data = {
     ],
   },
   banner: {
-    description: "我叫禹璐，擅长编程",
+    description: "擅长编程",
     more: "了解更多",
     portraits: [
       {
