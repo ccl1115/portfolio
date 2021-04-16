@@ -45,6 +45,10 @@
   });
 </script>
 
+<svelte:head>
+  <title>Simon Portfolio</title>
+</svelte:head>
+
 <main class="h-full relative superman">
   <div id="header" class="z-20 w-full">
     <Header/>
