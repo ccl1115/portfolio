@@ -1,7 +1,7 @@
 <script lang="ts">
   import gsap from "gsap";
   import { onMount } from "svelte";
-import { get_spread_object } from "svelte/internal";
+  import { get_spread_object } from "svelte/internal";
   import Intro from "../components/Intro.svelte";
   import Languages from "../components/Languages.svelte";
   import Platforms from "../components/Platforms.svelte";
@@ -52,11 +52,15 @@ import { get_spread_object } from "svelte/internal";
   }
 
   function scrollFadeIn(top: number, el: HTMLElement) {
-    if (top + html.clientHeight / 2 + 500 > el.offsetTop) {
-      const a = (top + html.clientHeight / 2 - el.offsetTop) / 300;
-      gsap.set(el, {
-        opacity: a,
-        y: Math.max(0, (1 - a) * 400),
+    if (top + html.clientHeight * 0.8 > el.offsetTop) {
+      gsap.to(el, {
+        opacity: 1,
+        y: 0,
+      });
+    } else {
+      gsap.to(el, {
+        opacity: 0,
+        y: 100,
       });
     }
   }
