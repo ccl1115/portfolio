@@ -66,14 +66,14 @@
 
 <div class="absolute top-0 w-full flex flex-col h-screen">
   <div
-    class="purple80 text-gray-100 lg:flex lg:flex-row items-center h-1/12 fixed z-20 w-full"
+    class="bg-white text-gray-900 lg:flex lg:flex-row items-center h-1/12 fixed z-20 w-full"
     bind:this={header}
     bind:clientHeight={headerHeight}
   >
     <div class="flex flex-row items-center lg:w-1/2 h-full ml-12">
       <div class="col-start-2 col-span-4 flex flex-col items-start px-5">
-        <p class="text-lg text-gray-100">{zhCH.header.title}</p>
-        <p class="text-sm text-gray-300">{zhCH.header.subtitle}</p>
+        <p class="text-lg text-gray-900">{zhCH.header.title}</p>
+        <p class="text-sm text-gray-500">{zhCH.header.subtitle}</p>
       </div>
     </div>
     <div
@@ -82,7 +82,7 @@
     >
       {#each zhCH.header.links as item}
         <a
-          class="p-2 rounded-lg hover:text-gray-800 hover:bg-white hover:shadow-md transition-all"
+          class="p-2 rounded-lg hover:text-gray-800 hover:bg-gray-100 hover:shadow-md transition-all"
           href={item.link}>{item.text}</a
         >
       {/each}
@@ -90,10 +90,10 @@
   </div>
 
   <div
-    class="purple80 flex flex-col items-center justify-center h-10/12"
+    class="bg-gray-200 flex flex-col items-center justify-center h-10/12"
     bind:clientHeight={bannerHeight}
   >
-    <p class="text-white p-4">{zhCH.banner.description}</p>
+    <p class="text-black p-4">{zhCH.banner.description}</p>
     <div class="p-1 rounded-full bg-white">
       <div class="flex flex-col items-center">
         <div
@@ -126,25 +126,25 @@
         </div>
       </div>
     </div>
-    <p class="m-10 text-white text-2xl">{text}</p>
+    <p class="m-10 text-black text-2xl">{text}</p>
     <div class="flex flow-col">
       <div
-        class="w-2 h-4 m-1 rounded-full bg-white transition-all"
+        class="w-2 h-4 m-1 rounded-full bg-black transition-all"
         class:w-4={index == 0}
         on:click={() => setIndex(0)}
       />
       <div
-        class="w-2 h-4 m-1 rounded-full bg-white transition-all"
+        class="w-2 h-4 m-1 rounded-full bg-black transition-all"
         class:w-4={index == 1}
         on:click={() => setIndex(1)}
       />
       <div
-        class="w-2 h-4 m-1 rounded-full bg-white transition-all"
+        class="w-2 h-4 m-1 rounded-full bg-black transition-all"
         class:w-4={index == 2}
         on:click={() => setIndex(2)}
       />
       <div
-        class="w-2 h-4 m-1 rounded-full bg-white transition-all"
+        class="w-2 h-4 m-1 rounded-full bg-black transition-all"
         class:w-4={index == 3}
         on:click={() => setIndex(3)}
       />

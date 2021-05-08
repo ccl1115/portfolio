@@ -51,7 +51,7 @@
 
 <main class="h-full relative superman">
   <div id="header" class="z-20 w-full">
-    <Header/>
+    <Header />
   </div>
   <button
     bind:this={topButton}
@@ -94,31 +94,15 @@
   }
 
   .purple80 {
-    background: #41295a; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to right,
-      #2f0743,
-      #41295a
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      to right,
-      #2f0743,
-      #41295a
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: white;
   }
 
   .superman {
-    background: #0099f7; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to left,
-      #f11712,
-      #0099f7
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      to left,
-      #f11712,
-      #0099f7
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-image: linear-gradient(
+      94.3deg,
+      rgba(26, 33, 64, 1) 10.9%,
+      rgba(81, 84, 115, 1) 87.1%
+    );
   }
 
   .block {
