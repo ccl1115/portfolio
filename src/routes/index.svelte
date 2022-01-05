@@ -1,12 +1,12 @@
 <script lang="ts">
   import gsap from "gsap";
   import { onMount } from "svelte";
-  import { get_spread_object } from "svelte/internal";
   import Intro from "../components/Intro.svelte";
   import Languages from "../components/Languages.svelte";
   import Platforms from "../components/Platforms.svelte";
   import Projects from "../components/Projects.svelte";
   import Tools from "../components/Tools.svelte";
+  import "./i18n.svelte";
 
   import section from "../stores/section";
 
@@ -56,7 +56,7 @@
       gsap.to(el, {
         opacity: 1,
         y: 0,
-        delay: 0.3
+        delay: 0.3,
       });
     } else {
       gsap.to(el, {

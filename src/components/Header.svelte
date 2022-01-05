@@ -3,7 +3,7 @@
   import { circOut } from "svelte/easing";
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
-  import { zhCH } from "../data/data";
+  import { locale, locales, _ } from "svelte-i18n";
   import gsap from "gsap";
 
   import section from "../stores/section";
@@ -24,7 +24,7 @@
   function setIndex(i: number) {
     index = i;
     translate.set(-i * 15);
-    text = zhCH.banner.portraits[index].text;
+    text = $_("slide.slide" + (i + 1));
   }
 
   function scroll() {
@@ -72,20 +72,30 @@
   >
     <div class="flex flex-row items-center lg:w-1/2 h-full ml-12">
       <div class="col-start-2 col-span-4 flex flex-col items-start px-5">
-        <p class="text-lg text-gray-900">{zhCH.header.title}</p>
-        <p class="text-sm text-gray-500">{zhCH.header.subtitle}</p>
+        <p class="text-lg text-gray-900">{$_("header.title")}</p>
+        <p class="text-sm text-gray-500">{$_("header.subtitle")}</p>
       </div>
     </div>
     <div
       id="links"
       class="hidden lg:flex flex-row justify-end mx-10 mb-1 gap-x-5 text-sm lg:w-1/2"
     >
-      {#each zhCH.header.links as item}
-        <a
-          class="p-2 rounded-lg hover:text-gray-800 hover:bg-gray-100 hover:shadow-md transition-all"
-          href={item.link}>{item.text}</a
-        >
-      {/each}
+      <a
+        class="p-2 rounded-lg hover:text-gray-800 hover:bg-gray-100 hover:shadow-md transition-all"
+        href="#languages">{$_("header.languages")}</a
+      >
+      <a
+        class="p-2 rounded-lg hover:text-gray-800 hover:bg-gray-100 hover:shadow-md transition-all"
+        href="#platforms">{$_("header.platforms")}</a
+      >
+      <a
+        class="p-2 rounded-lg hover:text-gray-800 hover:bg-gray-100 hover:shadow-md transition-all"
+        href="#projects">{$_("header.projects")}</a
+      >
+      <a
+        class="p-2 rounded-lg hover:text-gray-800 hover:bg-gray-100 hover:shadow-md transition-all"
+        href="#tools">{$_("header.tools")}</a
+      >
     </div>
   </div>
 
@@ -93,7 +103,13 @@
     class="bg-gray-200 flex flex-col items-center justify-center h-10/12"
     bind:clientHeight={bannerHeight}
   >
-    <p class="text-black p-4">{zhCH.banner.description}</p>
+    <select class="p-2 rounded-lg" bind:value={$locale}>
+      {#each $locales as locale}
+        <option value={locale}>{locale}</option>
+      {/each}
+    </select>
+
+    <p class="text-black p-4">{$_("slide.title")}</p>
     <div class="p-1 rounded-full bg-white">
       <div class="flex flex-col items-center">
         <div
@@ -159,19 +175,23 @@
     {#if fixed}
       <div
         transition:fade={{ delay: 200 }}
-        class="flex flex-row gap-x-10 my-4 absolute"
+        class="flex flex-row lg:gap-x-10 gap-x-2 my-4 absolute lg:text-base text-sm"
       >
-        <button on:click={() => section.set("languages")}
-          >{zhCH.banner.menu.languages}</button
+        <button
+          class="hover:underline"
+          on:click={() => section.set("languages")}
+          >{$_("header.languages")}</button
         >
-        <button on:click={() => section.set("platforms")}
-          >{zhCH.banner.menu.platforms}</button
+        <button
+          class="hover:underline"
+          on:click={() => section.set("platforms")}
+          >{$_("header.platforms")}</button
         >
-        <button on:click={() => section.set("projects")}
-          >{zhCH.banner.menu.projects}</button
+        <button class="hover:underline" on:click={() => section.set("projects")}
+          >{$_("header.projects")}</button
         >
-        <button on:click={() => section.set("tools")}
-          >{zhCH.banner.menu.tools}</button
+        <button class="hover:underline" on:click={() => section.set("tools")}
+          >{$_("header.tools")}</button
         >
       </div>
     {:else}
@@ -179,7 +199,7 @@
         transition:fade={{ delay: 200 }}
         class="flex flex-row gap-x-10 absolute"
       >
-        <button on:click={scroll}>{zhCH.banner.more}</button>
+        <button on:click={scroll}>{$_("header.more")}</button>
       </div>
     {/if}
   </div>

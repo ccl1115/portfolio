@@ -1,6 +1,5 @@
 <script lang="ts">
-  import section from '../stores/section';
-
+  import section from "../stores/section";
 </script>
 
 <div>
@@ -10,7 +9,7 @@
   >
     <div class="flex flex-col items-center">
       <p class="text-lg">Name</p>
-      <p class="text-sm">禹璐 Simon</p>
+      <p class="text-sm">禹璐</p>
       <p class="text-lg pt-4">Location</p>
       <p class="text-sm">中国贵阳</p>
       <p class="text-lg pt-4">Email</p>
@@ -27,9 +26,14 @@
       </p>
     </div>
     <div class="flex flex-col items-center">
-      <button class="text-lg mb-4 p-1" on:click={() => section.set("languages")}>
+      <button
+        class="text-lg mb-4 p-1"
+        on:click={() => section.set("languages")}
+      >
         使用的语言
-        <span class="text-xs border rounded-sm border-white px-1 ml-1">查看</span>
+        <span class="text-xs border rounded-sm border-white px-1 ml-1"
+          >查看</span
+        >
       </button>
       <ul class="mx-20 text-sm">
         <li>Java</li>
@@ -41,9 +45,14 @@
       </ul>
     </div>
     <div class="flex flex-col items-center">
-      <button class="text-lg mb-4 p-1" on:click={() => section.set("platforms")}>
+      <button
+        class="text-lg mb-4 p-1"
+        on:click={() => section.set("platforms")}
+      >
         开发平台
-        <span class="text-xs border rounded-sm border-white px-1 ml-1">查看</span>
+        <span class="text-xs border rounded-sm border-white px-1 ml-1"
+          >查看</span
+        >
       </button>
 
       <ul class="mx-20 text-sm">
@@ -58,7 +67,9 @@
     <div class="flex flex-col items-center">
       <button class="text-lg mb-4 p-1" on:click={() => section.set("projects")}>
         公司/项目
-        <span class="text-xs border rounded-sm border-white px-1 ml-1">查看</span>
+        <span class="text-xs border rounded-sm border-white px-1 ml-1"
+          >查看</span
+        >
       </button>
       <ul class="lg:mx-20 text-sm">
         <li>北京千橡科技/人人网</li>
@@ -73,7 +84,9 @@
     <div class="flex flex-col items-center">
       <button class="text-lg mb-4 p-1" on:click={() => section.set("tools")}>
         工具使用
-        <span class="text-xs border rounded-sm border-white px-1 ml-1">查看</span>
+        <span class="text-xs border rounded-sm border-white px-1 ml-1"
+          >查看</span
+        >
       </button>
     </div>
     <div class="text-center">

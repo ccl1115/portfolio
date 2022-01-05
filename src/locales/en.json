@@ -1,0 +1,55 @@
+{
+	"header": {
+		"title": "Simon Yu Portfolio",
+		"subtitle": "Professions/Skills/Career",
+		"more": "More",
+		"languages": "Languages",
+		"platforms": "Platforms",
+		"projects": "Projects",
+		"tools": "Tools"
+	},
+	"slide": {
+		"title": "Good at programming",
+		"slide1": "Think as Geek",
+		"slide2": "Expert on Android platform",
+		"slide3": "Frontend",
+		"slide4": "Fullstack"
+	},
+	"intro": {
+		"name": "Simon Yu",
+		"location": "Guiyang China",
+		"view": "more",
+		"fullstack": {
+			"title": "Fullstack developer",
+			"description": "I'm now a ten-year experienced fullstack programmer. Works at First class Internet industry companies in my early careers. Then move back to my hometown city Guiyang. Expert on Android app development and Web development. Also fimiliar with Node.js stack as backend development."
+		},
+		"languages": {
+			"title": "Programming languages"
+		},
+		"platforms": {
+			"title": "Platforms"
+		},
+		"projects": {
+			"title": "Companies & Projects",
+			"company1": "Beijing 1000 ork Inc. / Renren.com",
+			"company2": "Baidu Inc. / tieba.baidu.com",
+			"company3": "Beijing Bytedance Inc.",
+			"company4": "Beijing Utree Inc.",
+			"company5": "Guiyang Yuwan Inc.",
+			"company6": "Guizhou Lecent Inc.",
+			"company7": "Guizhou Chemi Inc."
+		},
+		"tools": {
+			"title": "Tools"
+		},
+		"personal": {
+			"title": "Personal Projects",
+			"personal1": "Thumb Launcher",
+			"personal2": "Thumb Launcher @ Google Play"
+		},
+		"education": {
+			"title": "Eduacations",
+			"education1": "Graduate from Dalian University Of Technology at 2011"
+		}
+	}
+}

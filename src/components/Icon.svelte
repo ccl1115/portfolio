@@ -1,13 +1,18 @@
-<script>
-  export let icon;
+<script lang="ts">
+  export let icon: string;
+  export let className: string = "";
+  export let width: string = "w-20";
+  export let height: string = "h-10";
 </script>
 
-<div class="flex flex-row justify-end">
-  <div class="flex flex-col items-center justify-center">
-    <img
-      class="object-cover h-12 w-30 rounded-lg shadow-lg"
-      src={icon}
-      alt="icon"
-    />
-  </div>
+<div
+  class="rounded-lg shadow-lg overflow-hidden {width ? width : 'w-20'} {height
+    ? height
+    : 'h-10'} {className}"
+>
+  <img
+    class="object-cover {width ? width : 'w-full'} {height ? height : 'h-10'}"
+    src={icon}
+    alt="icon"
+  />
 </div>
